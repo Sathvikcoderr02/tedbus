@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
 import { Bus } from '../model/bus.model';
 import { BusService } from '../service/bus.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { BusService } from '../service/bus.service';
 export class ChatbotService {
   // Using OpenRouter API
   private aiApiUrl = 'https://openrouter.ai/api/v1/chat/completions';
-  private openRouterApiKey = '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';
+  private openRouterApiKey = environment.openRouterApiKey;
   private apiUrl: string;
 
   constructor(

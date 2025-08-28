@@ -29,10 +29,10 @@ app.use('/api', bookingRoutes);
 app.use('/api/community', communityRoutes);
 app.use('/api', notificationRoutes);
 
-const DBURL="mongodb+srv://admin:admin@tedbus.vqk1yid.mongodb.net/?retryWrites=true&w=majority&appName=tedbus"
-mongoose.connect(DBURL)
-.then(()=> console.log("Mongodb connected"))
-.catch(err=> console.error('Mongodb connection error:' ,err))
+// MongoDB connection using environment variable
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/tedbus')
+.then(() => console.log("MongoDB connected"))
+.catch(err => console.error('MongoDB connection error:', err))
 
 app.get('/',(req,res)=>{
     res.send('Hello , Ted bus is working')
